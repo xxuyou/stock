@@ -20,16 +20,16 @@
 
 1. Clone 代码到本地
 ```sh
+cd code/in/your/dir/
 git clone https://github.com/xxuyou/stock.git
 ```
 2. 进入目录，编译代码
 ```sh
-cd code/in/your/dir/
+cd stock/
 npm install
 ```
 3. 运行
 ```sh
-cd code/in/your/dir/
 npm start
 ```
 4. 打开浏览器，输入 http://127.0.0.1:8360
