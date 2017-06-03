@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>WSS DEMO Stock</title>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="no" />
+  <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://cdn.bootcss.com/socket.io/1.7.3/socket.io.min.js"></script>
+  <script src="http://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://xxuyou.com/static/js/wss.class.js?version=3.2.1"></script>
+  <script>
+    function sendPrice(count) {
+      if (/^\d+$/.test(count) == false) return false;
+      if (count < 1 || count > 100) return false;
+      $.get('/index/ajax_send_price', function (res) {
+        if (!res) return false;
+        if (res['err'] > 0) return false;
+        setTimeout(function () {
+          sendPrice(++count);
+        }, 5000);
+      }, 'json');
+    };
+    $(function () {
+      /**
+       * 连接参数，以下示例均为必填项
+       * update @ 2017-05-20
+       */
+      var config = {
+        "debug": true,
+        "info":  document.getElementById('result'),
+        "url":   $('#_wss').val(),   // wss 服务器 url
+        "app":   $('#_app').val(),   // 自己创建的 app name，用于域权限验证
+        "jwt":   $('#_token').val(), // 使用 JWT 制作的用户令牌，用于用户身份验证
+        "listener": []  // 待注册的监听事件，数组内放置多个监听函数
+      };
+      // 注册监听函数，可以注册多个
+      config['listener'].push({
+        "event":    $('#_pool').val() + ":change",
+        "callback": function (res) {
+          console.log('[CLIENT][INFO] 注册监听事件 receive ['+$('#_pool').val()+':change]:', res);
+          var _tNode = document.createElement('p');
+          _tNode.innerHTML = '<kbd class="bg-primary">[DATA] 最新报价</kbd> ' + res['price'];
+          config.info.insertBefore(_tNode, config.info.childNodes[0]);
+        }
+      });
+      // 初始化 wss 实例
+      var initWssServ = function (config) {
+        var _wss = false;
+        if (!WSS) {
+          console.log('[CLIENT][ERR] WSS is not defined');
+          alert('WSS is not defined');
+          return false;
+        };
+        try {
+          _wss = new WSS(config);
+        } catch(e) {
+          console.log('[CLIENT][ERR] e', e);
+          alert(e.message);
+          return false;
+        };
+        return _wss.instance;
+      };
+      var _wss = initWssServ(config);
+      if (_wss) {
+        // 连接成功
+        sendPrice(1);
+      } else {
+        throw new Error("[CLIENT][ERR]错误：连接 WSS 服务器失败！请刷新页面重新尝试！");
+      };
+    });
+  </script>
+</head>
+<body>
+<input type="hidden" id="_wss" value="<%- payload.wss %>" />
+<input type="hidden" id="_app" value="<%- payload.app %>" />
+<input type="hidden" id="_token" value="<%- payload.token %>" />
+<input type="hidden" id="_pool" value="<%- pool %>" />
+<div class="wrapper">
+  <section class="content-header">
+    <div class="col-md-12">
+      <h3>WSS DEMO Stock</h3>
+    </div>
+  </section>
+  <section class="content">
+    <div class="col-md-12" id="result"></div>
+  </section>
+</div>
+</body>
+</html>
