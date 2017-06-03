@@ -2,7 +2,6 @@
 
 *.DS_Store
 .idea/*
-.babelrc
 .thinkjsrc
 nginx.conf
 pm2.json
