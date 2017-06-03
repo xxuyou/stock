@@ -4,15 +4,15 @@
 
 ## DEMO 股票行情
 
-[![Gitter](https://img.shields.io/badge/Powered%20by-WSS%20Realtime Data Push-brightgreen.svg)](http://xxuyou.com)
+[![Gitter](https://img.shields.io/badge/Powered%20by-WSS%20Realtime%20Data%20Push-brightgreen.svg)](http://xxuyou.com)
 
 本 DEMO 简单演示了向 WSS RESTful API 发布数据，以及订阅者订阅数据。
 
-响应事件，接收数据
+* 响应事件，接收数据
 
 ![响应事件，接收数据](https://github.com/xxuyou/yipaibao/blob/master/screenshot/demo-stock-01.png)
 
-开启 DEBUG 模式，可在控制台查看
+* 开启 DEBUG 模式，可在控制台查看
 
 ![开启 DEBUG 模式，可在控制台查看](https://github.com/xxuyou/yipaibao/blob/master/screenshot/demo-stock-02.png)
 
@@ -22,19 +22,16 @@
 ```sh
 git clone https://github.com/xxuyou/stock.git
 ```
-
-1. 进入目录，编译代码
+2. 进入目录，编译代码
 ```sh
 cd code/in/your/dir/
 npm install
 ```
-
-1. 运行
+3. 运行
 ```sh
 cd code/in/your/dir/
 npm start
 ```
-
 4. 打开浏览器，输入 http://127.0.0.1:8360
 
 即可看到行情数据推送过来
@@ -45,8 +42,10 @@ npm start
 # 感谢
 
 [![Gitter](https://img.shields.io/badge/Thanks%20for-ThinkJS%20Framework-brightgreen.svg)](https://github.com/thinkjs/thinkjs) 免费开源的 Node 开发框架！[官网](http://thinkjs.org)
+
 [![Gitter](https://img.shields.io/badge/Thanks%20for-SuperAgent-brightgreen.svg)](https://github.com/visionmedia/superagent) a small progressive **client-side** HTTP request library [官网](http://visionmedia.github.io/superagent/)
-[![Gitter](https://img.shields.io/badge/Thanks%20for-JWT-brightgreen.svg)](https://github.com/auth0/node-jsonwebtoken) [官网](https://jwt.io)
+
+[![Gitter](https://img.shields.io/badge/Thanks%20for-JWT-brightgreen.svg)](https://github.com/auth0/node-jsonwebtoken) an open, industry standard **RFC 7519** method for representing claims securely between two parties. [官网](https://jwt.io)
 
 # License
 
