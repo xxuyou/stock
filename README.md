@@ -1,4 +1,4 @@
-[![荆秀实时数据推送服务](https://github.com/xxuyou/yipaibao/blob/master/screenshot/logo-160.png)](http://xxuyou.com)
+[![荆秀实时数据推送服务](http://xxuyou.com/static/screenshot/logo-160.png)](http://xxuyou.com)
 
 # WSS Real-time Data Push Service
 
@@ -10,11 +10,11 @@
 
 * 响应事件，接收数据
 
-![响应事件，接收数据](https://github.com/xxuyou/yipaibao/blob/master/screenshot/demo-stock-01.png)
+![响应事件，接收数据](http://xxuyou.com/static/screenshot/demo-stock-01.png)
 
 * 开启 DEBUG 模式，可在控制台查看
 
-![开启 DEBUG 模式，可在控制台查看](https://github.com/xxuyou/yipaibao/blob/master/screenshot/demo-stock-02.png)
+![开启 DEBUG 模式，可在控制台查看](http://xxuyou.com/static/screenshot/demo-stock-02.png)
 
 ## 最佳实践
 
